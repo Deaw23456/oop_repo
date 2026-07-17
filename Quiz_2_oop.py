@@ -5,18 +5,17 @@ class Book :
         self.author = author
         self.price = price
 
-
-class Cart : 
-    def __init__(self, cart_ID:str):
-        self.cart_ID = cart_ID
-        self.book_in_cart = []
-
-    def Add_book(self, book:Book) -> None :
-        self.book_in_cart.append(book)
-
+class Cart :
+    def __init__(self, cart_id:str): 
+        self.cart_id = cart_id
+        self.books_in_cart = [] 
+        
+    def add_book(self, book:Book) -> None : 
+        self.books_in_cart.append(book) 
+        
     def calculate_total(self) -> int:
         return sum(book.price for book in self.books_in_cart)
-    
+        
     def show_items(self) -> None:
         print("=== ใบเสร็จรับเงิน ===")
         print(f"รหัสตะกร้า: {self.cart_id}")
@@ -29,11 +28,10 @@ class Cart :
 
 class Bookstore:
     def __init__(self):
-        self.books_stock = [] 
-
+        self.books_stock = []
+        
     def add_to_stock(self, book: Book) -> None:
         self.books_stock.append(book)
-
 
 if __name__ == "__main__":
     book1 = Book("978-0132350884", "Clean Code", "Robert C. Martin", 450)
@@ -42,12 +40,10 @@ if __name__ == "__main__":
     shop = Bookstore()
     shop.add_to_stock(book1)
     shop.add_to_stock(book2)
-
+    
     my_cart = Cart(cart_id="C001")
-
-   
+    
     my_cart.add_book(book1)
     my_cart.add_book(book2)
-
-   
+    
     my_cart.show_items()
